@@ -8,6 +8,8 @@ this util use for DRF handle IDOR security issue
 
 ## Usage
 for example in your main urls.py and nginx.conf you can use this util as blow:
+
+urls.py:
 ```
 # urls.py
 urlpatterns = [
@@ -15,7 +17,10 @@ urlpatterns = [
     path("api/", include(api_urlpatters)),
     re_path(r'^media/(?P<path>.*)$', media_access, name='media'),
 ]
+```
 
+nginx:
+```
 # NGINX
 location @proxy_api {
     proxy_set_header X-Forwarded-Proto https;
